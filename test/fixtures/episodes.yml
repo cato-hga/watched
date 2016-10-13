@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: episodes
+#
+#  id          :integer          not null, primary key
+#  title       :string
+#  season_id   :integer
+#  number      :integer
+#  plot        :text
+#  released_at :date
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
