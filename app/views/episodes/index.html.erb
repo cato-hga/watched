@@ -1,9 +1,14 @@
 <h1>Episodes</h1>
-<hr />
+<hr>
 
 <% @episodes.each do |episode| %>
-<section>
-    <h2><%=episode.title%></h2>
-    <p><%=episode.plot%></p>
-</section>
+  <% if !current_user.watched_episodes.exists?(episode_id: episode.id) %>
+    <section>
+      <h2>Season: <%=episode.season.number%> - <%=episode.title%></h2>
+      <p><%= episode.plot %></p>
+      <p><%= button_to "Marked as watched", watched_path(episode.id), method: :post %></p>
+    </section>
+  <% end %>		
 <% end %>
+
+
