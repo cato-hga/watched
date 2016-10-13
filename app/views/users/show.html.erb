@@ -1,17 +1,33 @@
 <h1>User Profile</h1>
-<hr />
+<hr>
 
 <table>
     <tr>
-        <th>Name:</th>
-        <td><%=current_user.username%></td>
+      <th>Name:</th>
+      <td><%=current_user.username%></td>
     </tr>
     <tr>
-        <th>Email:</th>
-        <td><%=current_user.email%></td>
+      <th>Email:</th>
+      <td><%=current_user.email%></td>
     </tr>
     <tr>
-        <th>Logins:</th>
-        <td><%=current_user.sign_in_count%></td>
+      <th>Logins:</th>
+      <td><%=current_user.sign_in_count%></td>
     </tr>
-</table>
+</table>    
+<% if @completed_seasons.present? %>
+  <ul>
+    <h2>Completed Seasons</h2>
+    <% @completed_seasons.each do |season| %>
+      <li><%= "Season #{Season.find(season).number}"%></li>
+    <% end if @completed_seasons.present? %>    
+  </ul>
+<% end %>
+<% if @watched_episodes.present? && @completed_seasons.count != current_user.total_episodes_per_season.count %>
+  <ul>
+    <h2>Watched Episodes</h2>
+      <% @watched_episodes.each do |watched_episode| %>
+        <li><%= "#{watched_episode.episode.title} (season #{watched_episode.episode.season.number})"if !@completed_seasons.include?(watched_episode.episode.season.id) %></li>
+      <% end %>
+  </ul>
+<% end %>    
