@@ -6,7 +6,7 @@
     <section>
       <h2>Season: <%=episode.season.number%> - <%=episode.title%></h2>
       <p><%= episode.plot %></p>
-      <p><%= button_to "Marked as watched", watched_path(episode.id), method: :post %></p>
+      <p><%= button_to "Marked as watched", watched_path(episode.id), class: "btn btn-default", method: :post%></p>
     </section>
   <% end %>		
 <% end %>

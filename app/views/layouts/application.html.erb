@@ -8,15 +8,17 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <nav>
-        <%= link_to 'Episodes', root_path %>
-        <%= link_to 'User Profile', users_profile_path %>
-        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+  <body class="container">
+    <nav id="special_buttons">
+        <button class="btn btn-default"><%= link_to 'Episodes', root_path %></button>
+        <button class="btn btn-default"><%= link_to 'User Profile', users_profile_path %></button>
+        <button class="btn btn-default"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></button>
     </nav>
 
     <main>
         <%= yield %>
     </main>
+
+    <%= yield :tail %>
   </body>
 </html>
